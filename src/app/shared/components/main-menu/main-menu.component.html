@@ -1,0 +1,23 @@
+<header class="sherlock-header">
+  <img src="./assets/images/sherlock-logo.svg" alt="sherlock-logo" />
+
+  <kendo-menu class="menu-items menu-left" [items]="items" (select)="onSelectNavigate($event)"></kendo-menu>
+  <app-global-search class="menu-items menu-center semibold-text"></app-global-search>
+  <app-logged-in-user></app-logged-in-user>
+  <div class="menu-items menu-right">
+    <img src="/assets/images/Component 72 – 1.svg" alt="send-icon"  #sendpopAnchor (click)="onToggleSendPop()" />
+    <img src="/assets/images/Component 71 – 1.svg" alt="notification-icon" />
+  </div>
+ 
+
+  <kendo-popup [anchor]="sendpopAnchor"  class="pop" #popContent (anchorViewportLeave)="closeSendPop()" *ngIf="showSend"
+    class="sherlock-popover-block send-pop">
+    <div class='content popover-content'>
+      <ul class="list-dropdown" *ngFor="let list of sendDropdownLists">
+        <li>{{list}}</li>
+      </ul>
+    </div>
+  </kendo-popup>
+
+
+</header>

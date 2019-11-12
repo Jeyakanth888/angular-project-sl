@@ -1,0 +1,99 @@
+$color_1: #000;
+$background-color_1: #fff;
+
+.sherlock-dropdown {
+	width: 296px !important;
+}
+.review-filter-options {
+	border: 1px solid #D0D0D0;
+	border-radius: 2px;
+	margin: 20px 0px;
+	padding: 20px 30px;
+	h5 {
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 5px;
+	}
+}
+
+.row-fields {
+	&:first-child {
+		margin-left: 0px;
+	}
+}
+.add-btn {
+	height: 24px !important;
+	margin-left: 21px !important;
+	vertical-align: middle !important;
+	width: 70px;
+}
+.filter-submit-cancel-btns {
+	button {
+		margin: 10px 20px 10px 0px !important;
+		box-shadow: none !important;
+		width: 84px;
+	}
+}
+.apply-btn.enable {
+	opacity: 1;
+	pointer-events: auto;
+	cursor: pointer;
+}
+.apply-btn.disable {
+	pointer-events: none;
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+.close-btn {
+	background-color: $background-color_1 !important;
+	color: $color_1;
+	border: 1px solid #8A8886;
+}
+.page-filter-section {
+	height: auto;
+	.arrow-up-down {
+		top: -2px;
+		right: -20px;
+		position: absolute;
+	}
+}
+ 
+.input-text {
+	border-color:rgb(85, 66, 48);
+	width: 296px !important;
+}
+
+
+@-webkit-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.fadeInDown {
+	-webkit-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+}
+
+
+ 

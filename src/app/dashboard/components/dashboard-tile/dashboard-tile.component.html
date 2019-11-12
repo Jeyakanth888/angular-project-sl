@@ -1,0 +1,14 @@
+<div class="tile"  [ngClass]="[tileData.status=='1RC' ? 'one-RC' : '',  tileData.status=='1R-In Progress' ? 'one-RIn-progress' : '', tileData.status=='2R-In Progress' ? 'two-RIn-progress' : '', tileData.status=='Not Started' ? 'not started' : '',tileData.status=='Approved' ? 'approved' : '', tileData.status=='Cancelled'?'cancelled':'' , tileData.status=='1RC-Audit'?'one-RC-audit':'',  tileData.status=='2R Variance'?'two-R-variance':'']">
+        <p class="tile-head"><span class="sm-circle"
+                        [ngClass]="[tileData.status=='1RC' ? 'one-RC' : '',  tileData.status=='1R-In Progress' ? 'one-RIn-progress' : '', tileData.status=='2R-In Progress' ? 'two-RIn-progress' : '', tileData.status=='Not Started' ? 'not started' : '',tileData.status=='Approved' ? 'approved' : '', tileData.status=='Cancelled'?'cancelled':'' , tileData.status=='1RC-Audit'?'one-RC-audit':'',  tileData.status=='2R Variance'?'two-R-variance':'']">
+                </span><span class="status-text bold-text"> {{tileData.status}}</span> </p>
+        <div class="tile-counts  semibold-text">
+                <div class="count-left">{{tileData.count}}</div>
+                <div class="count-right">
+                        <p>$ 2358</p>
+                        <span class="light-text">Million</span>
+                </div>
+        </div>
+        <p class="days-left">5 days (avg. time)</p>
+        <p class="view-all semibold-text blue-text">View all <span class="k-icon k-i-arrow-right"></span></p>
+</div>

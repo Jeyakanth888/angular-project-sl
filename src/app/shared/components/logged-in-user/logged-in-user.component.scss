@@ -1,0 +1,47 @@
+$color_1: #fff;
+$background-color_1: #000;
+$background-color_2: #339fd9;
+
+.sherlock-user-info {
+	div {
+		display: inline-block;
+	}
+	.user-info {
+		margin-left: 10px;
+		color: $color_1;
+		margin-top: 20px;
+		text-align: left;
+		vertical-align: top;
+		width: 74%;
+		h3 {
+			font-size: 20px;
+		}
+		h6 {
+			font-size: 14px;
+			font-weight: 100;
+			margin-block-start: 0px;
+			margin-block-end: 0px;
+			margin-inline-start: 0px;
+			margin-inline-end: 0px;
+		}
+	}
+	.user-icon {
+		margin: 15px 0px 15px 30px;
+	}
+	background-color: $background-color_1;
+	.ms-sherlock-user-icon {
+		background-size: 25px 25px;
+		background-color: $background-color_2 !important;
+		padding: 18px !important;
+		border-radius: 50px !important;
+	}
+	.text-icon {
+		padding: 11px 13px !important;
+		font-size:24px;
+		color:$color_1;
+		background-color: #339fd9 !important;
+		border-radius:50px;
+	}
+}
+
+

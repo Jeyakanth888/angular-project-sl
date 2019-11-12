@@ -1,0 +1,16 @@
+$color_1: #79828B;
+
+.review-conclusion {
+	>p {
+		color: $color_1;
+		font-size: 14px;
+	}
+	margin: 1.5% 0;
+	.textarea-block {
+		padding: 5px 0px !important;
+	}
+}
+.conclusion-comment-textarea {
+	width: 92vw;
+	height: 55vh;
+}

@@ -1,0 +1,29 @@
+<kendo-panelbar class="sherlock-panel">
+    <kendo-panelbar-item [expanded]="true" *ngIf="!startedBegin">
+        <ng-template kendoPanelBarContent>
+            <div class="panel-treeview-head">
+                    <h3 class="paneltree-left panel-heading semibold-text">Decision tree</h3>
+                    <p class="panel-heading paneltree-right semibold-text">Reviewer 01</p>
+            </div>
+            <kendo-treeview class="sherlock-treeview review-summary-treeview" [nodes]="data" textField="text"
+                kendoTreeViewExpandable kendoTreeViewSelectable kendoTreeViewHierarchyBinding childrenField="questions"
+                [(expandedKeys)]="expandedKeys"  (selectionChange)="handleSelection($event)"   >
+                <ng-template kendoTreeViewNodeTemplate let-dataItem>
+                    <div class="paneltree-left">
+                        <span class="">{{dataItem.text}}</span>
+                    </div>
+                    <div class="paneltree-right" *ngIf="dataItem.ans">
+                        <div class="ans-block">
+                            <span class="">{{dataItem.ans | titlecase}}</span>
+                        </div>
+                        <div class="ans-edit-block" *ngIf="dataItem.edit">
+                            <span class="k-icon k-i-file
+                            k-i-file-vertical"></span>
+                            <span class="k-icon k-i-pencil" ></span>
+                        </div>
+                    </div>
+                </ng-template>
+            </kendo-treeview>
+        </ng-template>
+    </kendo-panelbar-item>
+</kendo-panelbar>

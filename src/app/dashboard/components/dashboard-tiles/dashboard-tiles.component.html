@@ -1,0 +1,49 @@
+<kendo-panelbar class="sherlock-panel">
+        <kendo-panelbar-item [expanded]="true" class="tiles-top-head">
+                <ng-template kendoPanelBarContent>
+                        <div class="top-left">
+                                <h3 class="bold-text"><span> {{data.circle1.title}}</span> <span
+                                                *ngIf="data.circle2!==''"> vs {{data.circle2.title}}</span></h3>
+                        </div>
+                        <div class="sort top-right" *ngIf="data.isSort">
+                                <kendo-dropdownlist class="sherlock-dropdown sort-dropdown" name="field"
+                                        [data]="progressDropdown" [textField]="'text'" [valueField]="'value'"
+                                        [(ngModel)]="selectedSortValue">
+                                </kendo-dropdownlist>
+                        </div>
+                </ng-template>
+        </kendo-panelbar-item>
+        <kendo-panelbar-item [expanded]="true">
+                <ng-template kendoPanelBarContent>
+                        <div class="progress-circle"
+                                [ngClass]="data.showCircle===1?'one-visible-circle':'two-visible-circle'">
+                                <div class="circle circle-two" *ngIf="data.showCircle===2"
+                                        [ngStyle]="setBackgroundColor(data.circle2.title)"
+                                        [ngClass]="getClasses(data.circle2.completedPercentage)">
+                                        <span>{{data.circle2.completedPercentage}}%</span>
+                                        <div class="slice">
+                                                <div class="bar" [ngStyle]="setBorderColor(data.circle2.title)"></div>
+                                                <div class="fill" [ngStyle]="setBorderColor(data.circle2.title)"></div>
+                                        </div>
+                                </div>
+                                <div class="circle circle-one" [ngStyle]="setBackgroundColor(data.circle1.title)"
+                                        [ngClass]="getClasses(data.circle1.completedPercentage)">
+                                        <span>{{data.circle1.completedPercentage}}%</span>
+                                        <div class="slice">
+                                                <div class="bar" [ngStyle]="setBorderColor(data.circle1.title)"></div>
+                                                <div class="fill" [ngStyle]="setBorderColor(data.circle1.title)"></div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="comparison-show-text" *ngIf="data.circle2!==''">
+                                <p> <span class="sm-circle" [ngStyle]="setBorderColor(data.circle1.title)"></span> <span
+                                                class="bold-text sm-text"> {{data.circle1.title}}</span>
+                                </p>
+                                <p><span class="sm-circle" [ngStyle]="setBorderColor(data.circle2.title)"></span> <span
+                                                class="bold-text sm-text"> {{data.circle2.title}}</span>
+                                </p>
+                        </div>
+                </ng-template>
+        </kendo-panelbar-item>
+</kendo-panelbar>

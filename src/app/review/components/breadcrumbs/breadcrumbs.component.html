@@ -1,0 +1,10 @@
+<div class="progressive-breadcrumbs">
+    <div class="breadcrumbs" *ngFor="let breadcrumbs of breadcrumbs; index as i; last as isLast">
+        <div class="circle" [ngClass]="breadcrumbs.status">
+            <span class="label" [ngClass]="breadcrumbs.status==='completed'?'k-i-check
+            .k-i-checkmark k-icon':''"></span>
+            <span class="title" [ngClass]="breadcrumbs.bc===''?'empty':''">{{breadcrumbs.bc}} </span>
+        </div>
+        <span *ngIf="!isLast" class="bar"></span>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="sherlock-container">
+    <div class="review-details-top-left">
+        <p class="breadcrumb page-lists"><span>Review Queue</span>
+            <span>/</span>
+            <span>View</span> </p>
+        <div class="page-header">
+            <h1 class="page-title bold-text">Review ID - <span>123456</span> <span class="bordered-span">Auto</span></h1>
+        </div>
+        <h6>Sony corporation</h6>
+       <!-- <p class="small-text">Enterprise 6 standard enrollment</p>  -->
+        <button kendoButton class="sherlock-btns initiate-review" *ngIf="!isInitiatedReview"
+            (click)="clickNavigateGuidedReview()">
+            Initiate Review
+        </button>
+        <div class="btns-initiate-row" *ngIf="isInitiatedReview">
+            <button kendoButton class="sherlock-btns approve-btn">
+                Approve
+            </button>
+            <button kendoButton class="sherlock-btns review-second-btn">
+                Initiate 2nd Review
+            </button>
+            <button kendoButton class="sherlock-btns review-first-btn">
+                Evaluate 1st Review
+            </button>
+        </div>
+        <button class="sherlock-btns default-btn" kendoButton #otherReviewsBtn
+            (click)="onToggleOtherReviewBtns()">...</button>
+    </div>
+
+    <kendo-popup [anchor]="otherReviewsBtn" class="pop" #popOtherReviews (anchorViewportLeave)="closeReviewBtnsPop()"
+        *ngIf="showOtherReviews">
+        <div class='content popover-content'>
+            <ul class="list-dropdown">
+                <li>Cancel Review</li>
+                <li>Initiate Quality Review</li>
+            </ul>
+        </div>
+    </kendo-popup>
+
+
+    <div class="review-details-top-right">
+        <app-breadcrumbs></app-breadcrumbs>
+    </div>
+    <kendo-tabstrip class="review-details-tab sherlock-tab">
+        <kendo-tabstrip-tab [title]="'Details'" [selected]="true">
+            <ng-template kendoTabContent>
+                    <app-contract-reviewed></app-contract-reviewed>
+                <div class="review-details-bottom-left">
+                    <app-review-detail-table></app-review-detail-table>
+                    <app-review-conclusion></app-review-conclusion>
+                </div>
+                <div class="review-details-bottom-right">
+                    <app-reviewers></app-reviewers>
+                    <app-attachments [pageRef]="pageRef"></app-attachments>
+                </div>
+            </ng-template>
+        </kendo-tabstrip-tab>
+        <kendo-tabstrip-tab [title]="'Guided Review Summary'">
+            <ng-template kendoTabContent>
+                <app-review-summary></app-review-summary>
+            </ng-template>
+        </kendo-tabstrip-tab>
+    </kendo-tabstrip>
+</div>

@@ -1,0 +1,11 @@
+<div class="progressive-breadcrumbs review-summary">
+    <div class="breadcrumbs" [ngClass]="breadcrumbs.status"
+        *ngFor="let breadcrumbs of breadcrumbs; index as i; last as isLast">
+        <div class="circle" [ngClass]="breadcrumbs.status">
+            <span class="label">{{i+1}}</span>
+        </div>
+        <span class="title" (click)="clickBreadcrumbNavigate(breadcrumbs.path,i)"
+            [ngClass]="breadcrumbs.bc===''?'empty':''">{{breadcrumbs.bc}} </span>
+        <span *ngIf="!isLast" class="bar"></span>
+    </div>
+</div>

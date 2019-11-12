@@ -1,0 +1,30 @@
+
+.panel-heading {
+	font-size: 14px;
+	display: inline-block;
+}
+.paneltree-left {
+	display: inline-block;
+	width: 80%;
+	word-break: break-word;
+}
+.paneltree-right {
+	display: inline-block;
+	width: 20%;
+	text-align: left !important;
+}
+.ans-block {
+	display: inline-block;
+}
+.ans-edit-block {
+	display: inline-block;
+	margin-left: 8px;
+}
+.review-summary-treeview {
+	white-space: normal !important;
+}
+.panel-treeview-head {
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+

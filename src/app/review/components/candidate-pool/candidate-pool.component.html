@@ -1,0 +1,122 @@
+<div class="sherlock-container">
+    <div class="page-header">
+        <h1 class="page-title bold-text">Candidate Pool</h1>
+    </div>
+    <app-search-filter></app-search-filter>
+    <div class="panelbar-wrapper">
+        <kendo-panelbar class="sherlock-panel">
+            <kendo-panelbar-item [title]="''" expanded="true" class="generate-review-panel review-panel">
+                <ng-template #template let-anchor>
+                    <span>{{ anchor.nativeElement.innerText  }}</span>
+                </ng-template>
+
+                <ng-template kendoPanelBarContent>
+                    <button kendoButton class="sherlock-btns generate-review semibold-text"
+                        (click)="clickGenerateReview()">
+                        Generate Review
+                    </button>
+                    <button kendoButton class="sherlock-btns generate-combined-review semibold-text hide">
+                        Generate Combined Review
+                    </button>
+                    <div kendoTooltip position="top" tooltipClass="sherlock-tooltip" [tooltipTemplate]="template"
+                        filter=".k-grid td"  showOn="none" (mouseover)="showTooltip($event)">
+                        <kendo-grid (click)="resize($event)" class="generate-review-table sherlock-table"
+                            [data]="reviewTableData" [selectable]="{enabled: true, checkboxOnly: true}"
+                            [pageSize]="pageSize" [skip]="skip" [resizable]="true" [pageable]="{
+                            buttonCount: buttonCount,
+                            pageSizes: [20, 50, 100],
+                            info: true,
+                            sortable: true,
+                            previousNext: previousNext
+                          }" [navigable]="true" (pageChange)="onPageChange($event)"
+                            [sortable]="{ allowUnsort: allowUnsort, mode: 'single'}" [sort]="sort"
+                            (sortChange)="sortChange($event)" (cellClick)="cellClickHandler($event)" #gridCandidatePool>
+
+                            <kendo-grid-checkbox-column>
+                                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                                    <input class="k-checkbox" id="{{rowIndex}}"
+                                        [kendoGridSelectionCheckbox]="rowIndex" />
+                                    <label class="k-checkbox-label" for="{{rowIndex}}"></label>
+                                </ng-template>
+                            </kendo-grid-checkbox-column>
+                            <kendo-grid-column>
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    <span class="flag-icon" [ngClass]="dataItem.flag===false?'no-icon' : ''"></span>
+                                    <span class="notes-icon"
+                                        [ngClass]="dataItem.flag===true?'fill-note-icon' : ''"></span>
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column class="semibold-text" title="Clarify ID">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.clarity_id}}
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column class="engagement_name" title="Engagement #">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    <p class="engagement-text"
+                                        [ngClass]="dataItem.engagement_name.length>25?'show-tooltip-text-element':''"
+                                        [attr.data-tooltip-text]="dataItem.engagement_name">
+                                        {{dataItem.engagement_name}}</p>
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column class="customer_name" title="Customer Name">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    <p class="customername-text"
+                                        [ngClass]="dataItem.customer_name.length>35?'show-tooltip-text-element':''"
+                                        [attr.data-tooltip-text]="dataItem.customer_name"> {{dataItem.customer_name}}
+                                    </p>
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column title="Region">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.region}}
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column title="Sector">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.sector}}
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column title="Product">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.product}}
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column class="product-value" title="Product Value">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.product_value}}
+                                </ng-template>
+                            </kendo-grid-column>
+
+
+                            <kendo-grid-column title="Modified by SBD">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.modify_by_sbd}}
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column field="term" title="Term">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.term}}
+                                </ng-template>
+                            </kendo-grid-column>
+
+                            <kendo-grid-column title="Effective Date">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.effective_date}}
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column title="3rd Party Involved">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.involved_party}}
+                                </ng-template>
+                            </kendo-grid-column>
+                            <kendo-grid-column field="amount" title="Amount">
+                            </kendo-grid-column>
+                        </kendo-grid>
+                    </div>
+                </ng-template>
+            </kendo-panelbar-item>
+
+        </kendo-panelbar>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="sherlock-container">
+    <div class="page-header">
+        <h1 class="page-title bold-text">Review Queue</h1>
+    </div>
+    <div class="review-sort-options-row">
+        <div class="review-queue-sorts row-fields">
+            <label> Year</label>
+            <kendo-dropdownlist class="sherlock-dropdown sm-dropdown" name="field" [data]="yearDropOptions"
+                [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedYear">
+            </kendo-dropdownlist>
+        </div>
+        <div class="review-queue-sorts row-fields">
+            <label> Quarter</label>
+            <kendo-dropdownlist class="sherlock-dropdown sm-dropdown" name="field" [data]="quarter" [textField]="'text'"
+                [valueField]="'value'" [(ngModel)]="selectedQuarter">
+            </kendo-dropdownlist>
+        </div>
+    </div>
+    <app-search-filter></app-search-filter>
+    <div class="panelbar-wrapper">
+        <kendo-panelbar class="sherlock-panel">
+            <kendo-panelbar-item [title]="''" expanded="true" class="review-queue-panel review-panel">
+                <ng-template #template let-anchor>
+                    <span>{{ anchor.nativeElement.getAttribute("data-tooltip-text") }}</span>
+                </ng-template>
+                <ng-template kendoPanelBarContent>
+                    <kendo-grid kendoTooltip position="top" tooltipClass="sherlock-tooltip" [tooltipTemplate]="template"
+                        filter="p.show-tooltip-text-element" class="review-queue-table sherlock-table"
+                        [data]="reviewTableData" [data]="view | async" [selectable]="{enabled: true}"
+                        [pageSize]="pageSize" [skip]="skip" [resizable]="true" [pageable]="{
+                    buttonCount: buttonCount,
+                    pageSizes: [20, 50, 100],
+                    info: true,
+                    sortable: true,
+                    previousNext: previousNext
+                  }" [navigable]="true" (pageChange)="onPageChange($event)"
+                        [sortable]="{ allowUnsort: allowUnsort, mode: 'single'}" [sort]="sort"
+                        (sortChange)="sortChange($event)">
+                        <kendo-grid-column class="blue-text semibold-text" title="Acct. Contract">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                <span (click)="clickNavigateReviewDetail('12345')">{{dataItem.opportunity_id}} </span>
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column class="blue-text semibold-text" title="Review ID">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                <span (click)="clickNavigateReviewDetail('12345')">{{dataItem.clarity_id}} </span>
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column title="Clarify ID">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.clarity_id}}
+                            </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column class="engagement_name" title="Engagement #">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                <p class="engagement-text"
+                                    [ngClass]="dataItem.engagement_name.length>25?'show-tooltip-text-element':''"
+                                    [attr.data-tooltip-text]="dataItem.engagement_name">
+                                    {{dataItem.engagement_name}}</p>
+                            </ng-template>
+                        </kendo-grid-column>
+
+                        <kendo-grid-column class="customer_name" title="Customer Name">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                <p class="customername-text"
+                                    [ngClass]="dataItem.customer_name.length>35?'show-tooltip-text-element':''"
+                                    [attr.data-tooltip-text]="dataItem.customer_name"> {{dataItem.customer_name}}</p>
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column field="program" title="Program">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.program}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column title="Review Type">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.sector}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column title="Region">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.region}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column title="Sector">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.sector}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column title="Product">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.product}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <!--  <kendo-grid-column title="Modified by SBD">
+                                <ng-template kendoGridCellTemplate let-dataItem>
+                                    {{dataItem.modify_by_sbd}}
+                                </ng-template>
+                            </kendo-grid-column>-->
+                        <kendo-grid-column title="3rd Party Involved">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.involved_party}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column title="Assigned to">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                {{dataItem.assigned_to}}
+                            </ng-template>
+                        </kendo-grid-column>
+                        <kendo-grid-column field="amount" title="Amount"></kendo-grid-column>
+                        <kendo-grid-column title="Status">
+                            <ng-template kendoGridCellTemplate let-dataItem>
+                                <span class="copyrights-icon" class="sm-circle"
+                                    [ngClass]="[dataItem.status=='1RC' ? 'one-RC' : '',  dataItem.status=='1R-In Progress' ? 'one-RIn-progress' : '', dataItem.status=='2R-In Progress' ? 'two-RIn-progress' : '', dataItem.status=='Not started' ? 'not started' : '',dataItem.status=='Approved' ? 'approved' : '']"></span>
+                                {{dataItem.status}}
+                            </ng-template>
+                        </kendo-grid-column>
+                    </kendo-grid>
+                </ng-template>
+            </kendo-panelbar-item>
+
+        </kendo-panelbar>
+    </div>
+</div>

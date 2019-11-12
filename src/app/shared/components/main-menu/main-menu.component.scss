@@ -1,0 +1,89 @@
+$color_1: #fff;
+$color_2: #0065B3;
+$background-color_1: #000;
+$background-color_2: #fc0585;
+
+.sherlock-header {
+	background-color: $background-color_1;
+	height: 50px;
+	min-height: 50px;
+	padding: 0px 20px;
+	>img {
+		margin: 5px 0px;
+	}
+	.k-menu {
+		&:not(.k-context-menu) {
+			>.k-item {
+				color: $color_1 !important;
+			}
+		}
+	}
+}
+.menu-items {
+	display: inline-block;
+	vertical-align: top;
+	a {
+		color: $color_1;
+	}
+}
+.menu-left {
+	width: 33%;
+	margin: 15px 0 15px 5%;
+	a {
+		padding: 0px !important;
+		border-radius: 0px;
+		line-height: 2%;
+		margin-right: 2%;
+	}
+}
+.menu-center {
+	width: 39%;
+	font-size: 13px;
+	margin: 10px 0;
+}
+.menu-right {
+	margin-left: 5%;
+	float: right;
+	margin: 8px 0;
+	img {
+		margin: 0px 10px 0px 0px !important;
+		cursor: pointer;
+	}
+}
+.ms-sherlock-user-icon {
+	padding: 12px;
+	border-radius: 50px;
+	background-color: $background-color_2;
+	vertical-align: top;
+	cursor: pointer;
+	float: right;
+	margin: 4.5px 0;
+}
+
+.text-icon {
+	background-color: $background-color_2;
+	padding: 9px 10px;
+	color:$color_1;
+}
+
+
+a.search-sort {
+	min-width: 180px;
+}
+.sherlock-popover-block {
+	right: 8% !important;
+}
+.userlog.popover-content {
+	width: 370px;
+	border: none !important;
+}
+.user-logout {
+	padding: 18px 24px;
+	color: $color_2;
+	a {
+		cursor: pointer;
+	}
+}
+.sherlock-popover-block.userlog-block {
+	right: 20px !important;
+}

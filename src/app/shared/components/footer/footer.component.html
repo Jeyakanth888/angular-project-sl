@@ -1,0 +1,22 @@
+<footer class="sherlock-footer">
+  <div class="sherlock-footer-left">
+    <!--  <mat-list role="list">
+      <mat-list-item role="listitem">
+        <img src="../assets/images/MS-logo-sm.svg" alt="ms-logo"
+      /></mat-list-item>
+      <mat-list-item role="listitem">&copy; Microsoft 2019</mat-list-item>
+    </mat-list> -->
+    <img src="../assets/images/MS-logo-sm.svg" alt="ms-logo" />
+    <kendo-menu class="menu-item left-text">
+      <kendo-menu-item class="k-footer-menu-items" text="&copy; Microsoft 2019">
+      </kendo-menu-item>
+    </kendo-menu>
+
+  </div>
+
+  <div class="sherlock-footer-right">
+  
+      <kendo-menu class="menu-item" [items]="items" (select)="onSelectNavigateNewTab($event)"></kendo-menu>
+
+  </div>
+</footer>

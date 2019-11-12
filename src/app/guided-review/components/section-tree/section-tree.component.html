@@ -1,0 +1,11 @@
+<kendo-treeview class="sherlock-treeview questions-tree-view" #treeView [nodes]="showQuestions" textField="Question"
+    [children]="children" [hasChildren]="hasChildren" [(selectedKeys)]="selectedKeys"
+    (selectionChange)="handleSelection($event)" [kendoTreeViewSelectable]="{ mode: 'single' }"
+    [kendoTreeViewCheckable]="checkableSettings" [(checkedKeys)]="checkedKeys" [(disabledKeys)]="disabledKeys">
+
+
+    <ng-template  kendoTreeViewNodeTemplate let-dataItem let-rowIndex>
+        <b></b>
+        {{dataItem.Question}}
+    </ng-template>
+</kendo-treeview>

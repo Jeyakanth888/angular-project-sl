@@ -1,0 +1,120 @@
+$color_1: #0065B3;
+$color_2: #79828B;
+$color_3: #FF1000;
+$background-color_1: #F0F2F8;
+$background-color_2: #C0C2C6;
+
+.file-upload-block {
+	border: 1px dashed #707070;
+	padding: 11px 20px;
+	margin: 10px 0px;
+	background-color: $background-color_1;
+	label {
+		display: block;
+	}
+}
+.upload-btn {
+	margin-right: 10% !important;
+	margin-top: 12px !important;
+	width:75%;
+}
+
+.reviewQuided.upload-btn {
+	float: right;
+	margin-right: -5px !important;
+   margin-top: 15px !important;
+}
+.input-browse {
+	display: none;
+}
+.browse-btn {
+	color: $color_1;
+	font-size: 14px;
+	margin-left: 13px;
+	cursor: pointer;
+}
+.sm-dropdown {
+	width: 133%;
+	height: 32px !important;
+}
+.uploaded-files-block {
+	ul {
+		padding: 0px !important;
+		li {
+			list-style-type: none;
+			button.file_type {
+				color: $color_2;
+				background-color: $background-color_2;
+				width: 13%;
+				height: 18px;
+				font-size: 12px;
+				line-height: 0;
+				border-radius: 8px;
+				vertical-align: top;
+			}
+			span.file_name {
+				font-size: 14px;
+				margin-left: 10px;
+			}
+			span.file_delete {
+				color: $color_3;
+			 /*	font-size: 12px; */
+			 	font-size: 16px;
+				float: right;
+				cursor: pointer;
+			}
+		}
+	}
+}
+.sherlock-panel.reviewQuided {
+	box-shadow: none !important;
+	padding: 0px !important;
+	width: 100%;
+	.upload-btn {
+		margin-top: -6px !important;
+	}
+}
+.review-detail-select {
+	width: 75%;
+	margin-bottom:15px;
+}
+.browse-icon-block, .file-name-uploader {
+	display: inline-block;
+	width:80%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.uploader-name {
+	display:block;
+	font-size:10px;
+	color:#989898;
+	margin-left: 10px;
+}
+.browse-icon {
+	background-image:url('/assets/images/browse-icon.svg');
+	background-size: 30px 20px;
+	background-repeat: no-repeat;
+	width: 30px;
+    height: 20px;
+    margin-top: -5px;
+}
+
+.delete-icon {
+	background-image:url('/assets/images/delete-icon.svg');
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	width: 20px;
+    height: 20px;
+}
+
+.k-upload {
+	background-color:#fff !important; 
+	width: 100%;
+}
+
+.k-upload .k-button {
+	background:#0065B3 !important;
+	color:#fff !important;
+	box-shadow:none !important;
+}

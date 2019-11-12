@@ -1,0 +1,88 @@
+<kendo-popup title="''" *ngIf="showPop" [animate]="popupAnimate" (close)="closeUserPopup()"
+    class="sherlock-dialog-box add-user-info">
+    <h3 class="pop-head semibold-text" *ngIf="selectionType==='add'">Add new user </h3>
+    <form [formGroup]="accessForm" autocomplete="off" novalidate (ngSubmit)="submitUserAccessForm(accessForm.value)">
+        <div class="search-input" *ngIf="selectionType==='add'">
+            <label>Search a user</label>
+            <kendo-autocomplete class="search-user"  [data]="data" [filterable]="true"
+                (filterChange)="onSearchUser($event)" [value]="sortVal" placeholder="Enter name, email"
+                #popAssignReviewer>
+                <ng-template kendoAutoCompleteItemTemplate let-dataItem let-rowIndex>
+                    <div class="reviewers-list" (click)="onToggleSelectUser(rowIndex)">
+                        <div class="profile-image">
+                            <img alt="user-icon" class="ms-sherlock-user-icon" src="/assets/images/Icon.svg" />
+                            <span class="sm-circle online"></span>
+                        </div>
+                        <div class="profile-info reviewers">
+                            <span class="reviewer_name"> {{dataItem.name}}</span>
+                            <span class="reviewer_email">{{dataItem.email}}</span>
+                        </div>
+                    </div>
+                </ng-template>
+            </kendo-autocomplete>
+            <span class="k-icon-32 search-icon" #searchIcon *ngIf="searchVal.length===0"></span>
+        </div>
+
+        <div class="sherlock-user-info" *ngIf="selectionType==='view'">
+            <div class="user-icon">
+                <p *ngIf="!showUserIcon" class=" text-icon bold-text">KS</p>
+                <!--  <img src="../assets/images/Icon.svg" alt="user-icon" class="ms-sherlock-user-icon" />-->
+            </div>
+            <div class="user-info">
+                <h3 class="bold-text">Shane Kato</h3>
+                <h6>emailaddress@microsoft.com</h6>
+                <span>Lead</span>
+            </div>
+        </div>
+        <div class="user-access-section">
+            <label> <span> US Govt. contact access</span>
+                <kendo-switch formControlName="contactAccess" class="sherlock-switch-toggle">
+                </kendo-switch>
+                <span class="toggle-value">{{accessForm.controls.contactAccess.value?'Yes':'No'}}</span>
+            </label>
+        </div>
+        <div class="user-roles-access">
+            <h5 class="bold-text">Roles </h5>
+            <div class="toggle-group">
+                <label> <span> Read </span>
+                    <kendo-switch formControlName="readAccess" class="sherlock-switch-toggle">
+                    </kendo-switch>
+                    <span class="toggle-value">{{accessForm.controls.readAccess.value?'Yes':'No'}}</span>
+                </label>
+            </div>
+            <div class="toggle-group">
+                <label> <span> Reviewer 01 </span>
+                    <kendo-switch formControlName="reviewer1Access" class="sherlock-switch-toggle">
+                    </kendo-switch>
+                    <span class="toggle-value">{{accessForm.controls.reviewer1Access.value?'Yes':'No'}}</span>
+                </label>
+            </div>
+            <div class="toggle-group">
+                <label> <span> Reviewer 02 </span>
+                    <kendo-switch formControlName="reviewer2Access" class="sherlock-switch-toggle">
+                    </kendo-switch>
+                    <span class="toggle-value">{{accessForm.controls.reviewer2Access.value?'Yes':'No'}}</span>
+                </label>
+            </div>
+            <div class="toggle-group">
+                <label> <span> Dev team </span>
+                    <kendo-switch formControlName="devteamAccess" class="sherlock-switch-toggle">
+                    </kendo-switch>
+                    <span class="toggle-value">{{accessForm.controls.devteamAccess.value?'Yes':'No'}}</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button kendoButton class="sherlock-btns semibold-text" type="submit" *ngIf="selectionType==='add'">
+                Add
+            </button>
+            <button kendoButton class="sherlock-btns semibold-text" type="submit" *ngIf="selectionType==='view'">
+                Save
+            </button>
+            <button kendoButton class="sherlock-btns semibold-text default-btn" (click)="closeUserPopup()">
+                Cancel
+            </button>
+        </div>
+    </form>
+</kendo-popup>

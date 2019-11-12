@@ -1,0 +1,90 @@
+$color_1: #b5b5ba;
+$color_2: #fff;
+$color_3: #323130;
+$background-color_1: #6AB700;
+
+/* breadcrumb */
+.progressive-breadcrumbs {
+	width: 100%;
+	text-align: right;
+	.breadcrumbs {
+		display: inline-block;
+		width: 15%;
+		text-align: left;
+		&:last-child {
+			width: 1%;
+			.circle {
+				.title {
+					margin-left: -33px;
+				}
+			}
+		}
+	}
+	
+	.circle {
+		display: inline-block;
+		background: #fff;
+		width: 18px;
+		height: 18px;
+		border-radius: 20px;
+		border: 1px solid #8A8786;
+		.label {
+			display: inline-block;
+			color: $color_1;
+			font-size: 12px;
+		}
+		.label.k-icon {
+			color: $color_2;
+			padding: 4px 3px;
+			vertical-align: top;
+		}
+		.title {
+			color: $color_1;
+			font-size: 12px;
+			line-height: 30px;
+			white-space: nowrap;
+			overflow-wrap: break-word;
+		}
+		.title.empty {
+			line-height: 6;
+		}
+	}
+	.circle.dashed {
+		border: 1px dashed #8A8786;
+	}
+	.bar {
+		display: inline-block;
+		position: relative;
+		width: 83%;
+		height: 0px;
+		top: -32px;
+		border: none;
+		border-top: 1px solid #8A8786;
+	}
+	.circle.empty {
+		top: -10px;
+	}
+	.circle.completed {
+		background-color: $background-color_1;
+		border: 1px solid #fff;
+		.title {
+			color: $color_3;
+		}
+		+ {
+			span.bar {
+				border-top: 1px solid #6AB700;
+			}
+		}
+	}
+	.circle.progress {
+		.title {
+			color: $color_3;
+		}
+	}
+	.circle.in.progress {
+		background: #0065B3;
+		border: 1px solid #fff;
+	}
+}
+
+

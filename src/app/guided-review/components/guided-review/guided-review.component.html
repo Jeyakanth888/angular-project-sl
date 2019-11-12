@@ -1,0 +1,25 @@
+<div class="sherlock-container">
+    <div class="guided-review-top-left">
+        <p class="breadcrumb page-lists semibold-text"><span>Review Queue</span>
+            <span>/</span>
+            <span>Review ID</span> <span>/</span> <span>View</span> </p>
+        <div class="page-header">
+            <h1 class="page-title bold-text">123456 - <span>Guided Review</span> </h1>
+        </div>
+    </div>
+    <div class="guided-review-top-right">
+        <app-breadcrumbs-gr></app-breadcrumbs-gr>
+    </div>
+
+    <div class="review-content-block">
+        <router-outlet [data]="qusData">
+        </router-outlet>
+    </div>
+    <div class="btns-row">
+        <span class="sherlock-btn-span" (click)="clickBack()"> Back</span>
+        <button class="sherlock-btns btn-next" kendoButton *ngIf="currentPage!=='review-conclusion'">Next</button>
+        <button class="sherlock-btns btn-next" kendoButton *ngIf="currentPage==='review-conclusion'">Submit</button>
+        <button class="sherlock-btns default-btn btn-save" kendoButton>Save draft</button>
+        <span class="sherlock-btn-span"> Reset all</span>
+    </div>
+</div>

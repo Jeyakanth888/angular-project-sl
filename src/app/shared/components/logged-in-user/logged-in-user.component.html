@@ -1,0 +1,23 @@
+<!-- <img  src="../assets/images/Icon.svg" alt="user-icon" class="ms-sherlock-user-icon"  
+      (click)="onToggleUserLogPop()" /> -->
+
+      <p class=" text-icon bold-text ms-sherlock-user-icon" #userLog (click)="onToggleUserLogPop()" >KS</p>
+<kendo-popup [anchor]="userLog" #popContentUserLog (anchorViewportLeave)="closeUserLogPop()" *ngIf="showUserLog"
+    class="sherlock-popover-block userlog-block">
+    <div class='userlog popover-content'>
+        <div class="sherlock-user-info">
+            <div class="user-icon">
+             <p *ngIf="!showUserIcon" class=" text-icon bold-text" >KS</p>
+                <!--  <img src="../assets/images/Icon.svg" alt="user-icon" class="ms-sherlock-user-icon" />-->  
+            </div>
+            <div class="user-info">
+                <h3 class="bold-text">Shane Kato</h3>
+                <h6>emailaddress@microsoft.com</h6>
+            </div>
+        </div>
+        <div class="user-logout">
+            <a class="btn-logout">Logout</a>
+        </div>
+    </div>
+
+</kendo-popup>

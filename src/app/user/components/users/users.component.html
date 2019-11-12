@@ -1,0 +1,48 @@
+<div class="sherlock-container">
+    <div class="page-header">
+        <h1 class="page-title bold-text">Users</h1>
+    </div>
+    <div class="search-input">
+        <input kendoTextBox type="text" placeholder="Search by name" />
+        <span class="k-icon-32 search-icon" #searchIcon></span>
+    </div>
+    <button kendoButton class="sherlock-btns semibold-text add-new-user-btn" (click)="clickAddUser()">
+        Add a new user
+    </button>
+
+    <kendo-panelbar class="sherlock-panel">
+        <kendo-panelbar-item [title]="''" expanded="true" class="review-details-panel">
+            <ng-template kendoPanelBarContent>
+                <kendo-grid class="sherlock-table not-scrollable users-table" [data]="reviewTableData"
+                    [data]="view | async" (cellClick)="cellClickHandler($event)">
+                    <kendo-grid-column class="semibold-text" title="Name">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <img alt="user-icon" class="ms-sherlock-user-icon user-icon"
+                                src="../assets/images/Icon.svg">
+                            {{dataItem.name}}
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column field="email" title="Email"></kendo-grid-column>
+                    <kendo-grid-column field="alias" title="Alias"></kendo-grid-column>
+                    <kendo-grid-column title="US Govt. contract access">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <span class="k-icon k-i-check
+                          k-i-checkmark" *ngIf="dataItem.US_govt_contract_ccess"></span>
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column title="Role(s)" class="">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <ul class="roles-block">
+                                <li *ngFor="let role of dataItem.roles" class="{{role | lowercase}}"
+                                    [ngClass]="[role=='1st reviewer' ? 'first-reviewer' : '',  role=='2nd reviewer' ? 'second-reviewer' : '']">
+                                    {{role}}</li>
+                            </ul>
+                        </ng-template>
+                    </kendo-grid-column>
+                </kendo-grid>
+            </ng-template>
+        </kendo-panelbar-item>
+    </kendo-panelbar>
+</div>
+
+<app-user [showPop]="showPop" [selectionType]="selectionType" (UserPopupStatus)="updateUserPopupStatus($event)"></app-user>

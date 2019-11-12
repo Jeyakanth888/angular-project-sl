@@ -1,0 +1,79 @@
+.search-input {
+    position: relative;
+}
+
+.page-header {
+        display:inline-block !important;
+        width:auto !important ;
+}
+
+.search-input {
+    display:inline-block !important;
+    margin-left:5%;
+    width: 296px !important;
+}
+
+.search-input>input {
+    width:100% !important
+}
+
+.add-new-user-btn {
+    float: right;
+    height: 24px !important;
+    font-size: 12px !important;
+    cursor:pointer ;
+}
+
+.ms-sherlock-user-icon {
+    float:none !important;
+    background-size: 8px 8px;
+    width: 8px;
+    height: 8px;
+    margin:0px !important;
+    background-color:#B4B4B4;
+    padding:5px !important
+}
+
+.roles-block {
+    margin-block-start: 0em !important;
+    margin-block-end: 0em !important;
+    padding-inline-start: 0px !important;
+}
+
+.roles-block li {
+   list-style-type: none;
+   display: inline-block;
+   background-color:#F2F3F4;
+   border:1px solid #BDBDBD;
+   border-radius: 12px;
+   padding:3px 10px;
+   margin-right:5px;
+   color: #323130;
+   font-size:11px;
+}
+
+.roles-block li.dev.team {
+    background-color:#CDE1BE;
+    border-color: #9AC07B;
+}
+
+.roles-block li.admin {
+    background-color:#FFC8AF;
+    border-color: #FB8A48;
+}
+
+.roles-block li.first-reviewer {
+    background-color:#A8DCF7;
+    border-color: #5290D1;
+}
+
+
+.roles-block li.second-reviewer {
+    background-color:#76ADE8;
+    border-color: #5290D1;
+}
+
+
+.users-table tr td {
+    cursor: pointer !important;
+}

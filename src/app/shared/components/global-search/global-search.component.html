@@ -1,0 +1,26 @@
+<!-- <div class="sort-block">
+        <a #searchSort (click)="onToggleSearchSort()" class="search-sort-text">{{selectedSearchOption}}
+        <span class="k-icon down-arrow-icon ms-sl-icon" ></span></a>
+</div>
+
+
+<kendo-popup [anchor]="searchSort" #popContentSort (anchorViewportLeave)="closeSearchSortPop()" *ngIf="showSort" class="sherlock-popover-block sort-pop">
+    <div class='content popover-content'>
+        <ul class="list-dropdown" *ngFor="let list of searchByOptions">
+            <li (click)="onClickSearchOption(list)">{{list}}</li>
+        </ul>
+    </div>
+</kendo-popup> -->
+<div class="sort-block">
+    <kendo-dropdownlist class="sherlock-dropdown sortDropdown" [data]="listItems" [(ngModel)]="searchType">
+    </kendo-dropdownlist>
+</div>
+
+<div class="search-input">
+    <input kendoTextBox type="text" (keyup)="onSearchInput($event)" />
+    <span class="k-icon-32 search-icon" #searchIcon [ngClass]="searchVal.length===0?'disabled':enabled" (click)="clickSearch()"></span>
+    <!-- add ngif or ngclass(hide) -->
+    <div class="search-results-empty" *ngIf="showNoResults" #searchNoResult> 
+        <h6>No records found</h6>
+    </div>
+</div>

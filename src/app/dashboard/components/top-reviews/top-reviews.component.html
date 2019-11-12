@@ -1,0 +1,43 @@
+<kendo-panelbar class="sherlock-panel">
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <h3 class="bold-text text-head">Top 10 Reviews</h3>
+            <div class="form-field">
+                <kendo-dropdownlist class="sherlock-dropdown md-dropdown" name="field" [data]="reviewsDropdown"
+                    [textField]="'text'" [valueField]="'value'" [(ngModel)]="selectedReviewSort">
+                </kendo-dropdownlist>
+            </div>
+        </ng-template>
+    </kendo-panelbar-item>
+    <kendo-panelbar-item [title]="''" expanded="true">
+        <ng-template #template let-anchor>
+            <span>{{ anchor.nativeElement.getAttribute("data-tooltip-text") }}</span>
+        </ng-template>
+        <ng-template kendoPanelBarContent>
+            <kendo-grid kendoTooltip position="top" tooltipClass="sherlock-tooltip" [tooltipTemplate]="template"
+                filter="p.show-tooltip-text-element" class="review-top-table sherlock-table not-scrollable"
+                [data]="showData" [data]="view | async">
+                <kendo-grid-column class="bold-text" field="review_id" title="Review ID">
+                </kendo-grid-column>
+                <kendo-grid-column class="customer_name" title="Customer Name">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <p class="customername-text"
+                            [ngClass]="dataItem.customer.length>35?'show-tooltip-text-element':''"
+                            [attr.data-tooltip-text]="dataItem.customer"> {{dataItem.customer}}</p>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column class="amount" field="amount" title="Amount"></kendo-grid-column>
+                <kendo-grid-column title="Status">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <span class="copyrights-icon" class="sm-circle"
+                            [ngClass]="[dataItem.status=='1RC' ? 'one-RC' : '',  dataItem.status=='1R-In Progress' ? 'one-RIn-progress' : '', dataItem.status=='2R-In Progress' ? 'two-RIn-progress' : '', dataItem.status=='Not started' ? 'not started' : '',dataItem.status=='Approved' ? 'approved' : '']"></span>
+                        {{dataItem.status}}
+                    </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+            <p class="semibold-text blue-text view-more" (click)="clickViewMoreReviews()"
+                *ngIf="reviewDetailsData.length>'10'">View more </p>
+        </ng-template>
+
+    </kendo-panelbar-item>
+</kendo-panelbar>

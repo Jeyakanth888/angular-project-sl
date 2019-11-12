@@ -1,0 +1,105 @@
+@import "src/assets/scss/progress.circle.style.scss";
+
+$color_1: #000000;
+$color_2: #0065B3;
+$color_3: #4EC6BB;
+$color_4: #000;
+
+.top-left {
+	width: 65%;
+	display: inline-block;
+	>h3 {
+		font-size: 12px;
+		color: $color_1;
+	}
+}
+.top-right {
+	display: inline-block;
+	vertical-align: top;
+	width: 35%;
+	.sherlock-dropdown {
+		width: 100%;
+	}
+}
+.tiles-top-head {
+	min-height: 20%;
+}
+.sherlock-panel {
+	padding: 10px 20px !important;
+	height: 250px !important;
+	margin: 0px !important;
+	.progress-circle {
+		text-align: center !important;
+		position: relative;
+		min-height: 150px;
+	}
+}
+.progress-circle {
+	&:after {
+		clear: both;
+	}
+}
+.comparison-show-text {
+	p {
+		&:last-child {
+			margin-left: 3.9%;
+		}
+		display: inline-block;
+		font-size: 10px;
+	}
+}
+.circle-one {
+	position: absolute;
+	font-size: 115px;
+	width: 1em;
+	height: 1em;
+	top: 10%;
+	left: 50%;
+	margin-left: -58px;
+	border-radius: 50%;
+	>span {
+		left: 0;
+		top: 8px;
+		color: $color_2;
+	}
+}
+.circle-two {
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	font-size: 145px;
+	border-radius: 50%;
+	left: 50%;
+	margin-left: -73px;
+	>span {
+		left: 16px;
+		top: 0px;
+		color: $color_3;
+	}
+}
+.one-visible-circle {
+	.circle {
+		>span {
+			color: $color_4;
+			top: -4px;
+		}
+	}
+}
+
+.sm-circle {
+	margin-bottom:0px !important;
+}
+
+.sm-text {
+	vertical-align: top;
+}
+
+  
+
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+$color_1: #323130;
+$color_2: #79828B;
+$background-color_1: #fff;
+$background-color_2: #E0E0E0;
+$background-color_3: #D6F5B6;
+$background-color_4: #FBCFD3;
+$background-color_5: #FFE7BC;
+$border-color_1: #5EE2A0;
+$border-color_2: #55D8FE;
+$border-color_3: #A3A0FB;
+$border-color_4: #FEC163;
+$border-color_5: #666666;
+$border-color_6: #6FDBA9;
+$border-color_7: #FF8373;
+$border-color_8: #FECB6E;
+
+.tile {
+	padding: 5% 7%;
+	background-color: $background-color_1;
+	border: 1px solid;
+	border-radius: 2px;
+	.sm-circle {
+		width: 10px !important;
+		height: 10px !important;
+		border: none !important;
+	}
+	p.days-left {
+		color: $color_2;
+		font-size: 11px;
+		margin-bottom: 5px;
+	}
+	p.view-all {
+		font-size: 12px;
+		cursor: pointer;
+	}
+}
+.tile-head {
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+.tile-counts {
+	display: block;
+}
+.count-left {
+	display: inline-block;
+	width: 48%;
+	font-size: 30px;
+}
+.count-right {
+	display: inline-block;
+	width: 48%;
+	text-align: right;
+	>p {
+		font-size: 16px;
+		line-height: 1px;
+	}
+	>span {
+		font-size: 12px;
+		color: $color_1;
+	}
+}
+.tile.one-RC {
+	border-color: $border-color_1;
+}
+.tile.one-RIn-progress {
+	border-color: $border-color_2;
+}
+.tile.two-RIn-progress {
+	border-color: $border-color_3;
+}
+.tile.one-RC-audit {
+	border-color: $border-color_4;
+}
+.tile.not.started {
+	border-color: $border-color_5;
+	background-color: $background-color_2;
+}
+.tile.approved {
+	border-color: $border-color_6;
+	background-color: $background-color_3;
+}
+.tile.cancelled {
+	border-color: $border-color_7;
+	background-color: $background-color_4;
+}
+.tile.two-R-variance {
+	border-color: $border-color_8;
+	background-color: $background-color_5;
+}

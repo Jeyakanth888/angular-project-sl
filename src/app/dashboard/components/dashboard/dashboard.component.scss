@@ -1,0 +1,115 @@
+$color_1: #79828B;
+$color_2: #323130;
+$background-color_1: #fff;
+
+.page-header {
+	display: inline-block;
+	width: auto !important;
+}
+.page-filter {
+	display: inline-block;
+	width: auto !important;
+}
+.tiles-row {
+	margin-top: 20px;
+}
+.tiles {
+	margin-right: 1.1%;
+	width: 11.5%;
+	display: inline-block;
+	&:last-child {
+		margin-right: 0px;
+	}
+}
+.panel-tiles {
+	margin-right: 1.2%;
+	width: 19.04%;
+	display: inline-block;
+	vertical-align: top;
+	&:last-child {
+		margin-right: 0px;
+	}
+}
+.border-row {
+	margin: 10px 0px;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	&:before {
+		content: '';
+		border-top: 1px solid #ccc;
+		margin: 0;
+		flex: 1 0 20px;
+	}
+	&:after {
+		content: '';
+		border-top: 1px solid #ccc;
+		margin: 0;
+		flex: 1 0 20px;
+		margin: 0;
+	}
+}
+.total-count-row {
+	width: 18%;
+	background-color: $background-color_1;
+	padding: 4px 20px;
+	text-align: center;
+	border: 1px solid #CCCCCC;
+	.total {
+		display: inline-block;
+		float: left;
+		font-size: 12px;
+		
+	}
+	.days-avg {
+		display: inline-block;
+	}
+	.view-all {
+		display: inline-block;
+		float: right;
+		font-size: 12px;
+	}
+	.total-count {
+		font-size: 20px;
+		margin-left: 10px;
+		display: inline-block;
+   		 margin-top: -4px;
+	}
+}
+.days-avg {
+	font-size: 11px;
+	color: $color_1;
+}
+.reviews-block {
+	margin: 10px 0px;
+}
+.count-sort-block {
+	text-align: right;
+	color: $color_2;
+	margin: 20px 0px 0px 0px;
+	font-size: 12px;
+	cursor: pointer;
+}
+.popSortOptions {
+	left: auto !important;
+	right: 3% !important;
+}
+
+
+.dashboard-bottom {
+	margin: 20px 0;
+	.panels {
+		display: inline-block;
+		vertical-align: top;
+	}
+	.map-panel {
+		width: 58%;
+		margin-right: 1%;
+	}
+	.review-panel {
+		width: 41%;
+	}
+}
+

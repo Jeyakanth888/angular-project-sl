@@ -1,0 +1,47 @@
+<kendo-panelbar class="sherlock-panel" [ngClass]="pageReference">
+    <kendo-panelbar-item [expanded]="true" *ngIf="pageReference==='reviewDetail'">
+        <ng-template kendoPanelBarContent>
+            <h3 class="review-details-panel-heading bold-text">Agreement & attachments</h3>
+        </ng-template>
+    </kendo-panelbar-item>
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <div class="file-upload-block">
+                <div class="review-detail-select" *ngIf="pageReference==='reviewDetail'">
+                    <label> Select a file type</label>
+                    <kendo-dropdownlist class="sherlock-dropdown sm-dropdown" name="select_file"
+                        [data]="reviewFileTypes" [textField]="'text'" [valueField]="'value'" [valuePrimitive]="true">
+                    </kendo-dropdownlist>
+                </div>
+
+                <!--  <div class="browse-icon-block" *ngIf="pageReference!=='reviewDetail'">
+                    <span class="k-icon browse-icon"></span>
+                </div>
+                <input type="file" class="input-browse" formControlName="file_upload" #fileUpload />
+                <span class="browse-btn" *ngIf="pageReference!=='reviewDetail'"
+                    (click)="fileUpload.click()">Browse</span>
+                <button [ngClass]="pageReference" *ngIf="pageReference!=='reviewDetail'" kendoButton class="sherlock-btns upload-btn">
+                    Upload
+                </button>
+                <button *ngIf="pageReference==='reviewDetail'" kendoButton (click)="fileUpload.click()"
+                    class="sherlock-btns upload-btn">
+                    Select & Upload
+                </button>-->
+
+                <kendo-upload #uploadFile [saveUrl]="uploadSaveUrl" [removeUrl]="uploadRemoveUrl" [autoUpload]="false">
+                </kendo-upload>
+            </div>
+            <div class="uploaded-files-block" *ngIf="pageReference==='reviewDetail'">
+                <ul *ngFor="let files of uploadedFiles">
+                    <li><button kendoButton class="file_type">{{files.fileType}}</button>
+                        <div class="file-name-uploader">
+                            <span class="file_name semibold-text">
+                                {{files.fileName}}</span><span class="uploader-name">by {{files.fileUploader}}</span>
+                        </div> <span class="file_delete delete-icon" (click)="deleteFile()">
+                            <!-- Delete--></span>
+                    </li>
+                </ul>
+            </div>
+        </ng-template>
+    </kendo-panelbar-item>
+</kendo-panelbar>

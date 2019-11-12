@@ -1,0 +1,25 @@
+<kendo-panelbar class="sherlock-panel">
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <h3 class="review-details-panel-heading bold-text">Conclusion</h3>
+        </ng-template>
+    </kendo-panelbar-item>
+
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <div class="no-conclusion semibold-text" *ngIf="initiatedReviewers.length===0">
+                <p>No conclusion has been made till now</p>
+            </div>
+            <div class="conclusion-block" *ngIf="initiatedReviewers.length>0">
+                <div class="reviewed-reviewers" *ngFor="let reviewedReviewer of initiatedReviewers; let i = index">
+                    <img alt="user-icon" class="ms-sherlock-user-icon user-icon" src="../assets/images/Icon.svg">
+                    <h5 class="reviewer-name">{{reviewedReviewer.reviewer_name}}</h5>
+                    <span>Reviewer {{i+1 }}</span>
+                    <span class="reviewed-time">{{reviewedReviewer.reviewed_at | dayTimeDiff}}</span>
+                    <p>{{reviewedReviewer.reviewed_conclusion}}</p>
+                </div>
+            </div>
+        </ng-template>
+    </kendo-panelbar-item>
+
+</kendo-panelbar>

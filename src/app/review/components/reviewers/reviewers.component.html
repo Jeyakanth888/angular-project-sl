@@ -1,0 +1,63 @@
+<kendo-panelbar class="sherlock-panel">
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <h3 class="review-details-panel-heading bold-text">Reviewer</h3>
+        </ng-template>
+    </kendo-panelbar-item>
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <div class="reviewers-block" *ngFor="let reviewer of assignedReviewer; index as i;"
+                [ngClass]="i===1 && !reviewer.assigned?'disabled':''">
+                <h5>{{i+1 | ordinal}} Reviewer</h5>
+                <div class="unassigned-reviewer"
+                    *ngIf="!clickedChangeReviewer && clickedAssignNewReviewerIndex===i || !clickedChangeReviewer && clickedAssignNewReviewerIndex!==i || clickedChangeReviewer && clickedAssignNewReviewerIndex!==i">
+                    <img alt="user-icon" class="ms-sherlock-user-icon" src="/assets/images/Icon.svg" />
+                    <span class="unassigned semibold-text"  data-id="{{i}}" (click)="onToggleAssignReviewer(i)" #assignReviewer>
+                        {{reviewer.name}} </span>
+                </div>
+                <!-- <div class="search-input" *ngIf="clickedChangeReviewer && clickedAssignNewReviewerIndex===i">
+                    <input kendoTextBox type="text" placeholder="Search" (keyup)="sortReviewer($event)"/>
+                    <span *ngIf="sortVal.length===0" class="k-icon-32 search-icon"></span>
+                    <span *ngIf="sortVal.length>0" class="k-icon k-i-close
+                    k-i-x close-icon" (click)="clearSortVal($event)"></span>
+                </div> -->
+                <div class="search-input" *ngIf="clickedChangeReviewer && clickedAssignNewReviewerIndex===i" #searchReviewerIP>
+                    <kendo-autocomplete  [data]="data" class="search-reviewer"
+                        [filterable]="true" (filterChange)="handleFilter($event)" [value]="sortVal" placeholder="Search"
+                        >
+                        <ng-template kendoAutoCompleteItemTemplate let-dataItem let-rowIndex>
+                            <div class="reviewers-list" (click)="onSelectReviewer(rowIndex)">
+                                <div class="profile-image">
+                                    <img alt="user-icon" class="ms-sherlock-user-icon" src="/assets/images/Icon.svg" />
+                                    <span class="sm-circle online"></span>
+                                </div>
+                                <div class="profile-info reviewers">
+                                    <span class="reviewer_name"> {{dataItem.name}}</span>
+                                    <span class="reviewer_designation">{{dataItem.designation}}</span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </kendo-autocomplete>
+                    <span class="k-icon-32 search-icon" #searchIcon *ngIf="sortVal.length===0"></span>
+                </div>
+            </div>
+        </ng-template>
+    </kendo-panelbar-item>
+</kendo-panelbar>
+
+<!-- <kendo-popup [anchor]="assignReviewer" [margin]="margin" class="assign-reviewer-pop" #popAssignReviewer
+    (anchorViewportLeave)="closeAssignReviewerPop()" *ngIf="clickedChangeReviewer || showAssignReviewer">
+    <div class='content popover-content'>
+        <ul class="list-dropdown">
+            <li class="reviewers-list" *ngFor="let reviewer of reviewers;index as i" (click)="onSelectReviewer(i)">
+                <img alt="user-icon" class="ms-sherlock-user-icon" src="/assets/images/Icon.svg" />
+                <span class="sm-circle online"></span>
+                <p class="reviewers">
+                    <span class="reviewer_name" #assignReviewer> {{reviewer.name}}</span>
+                    <span class="reviewer_designation">{{reviewer.designation}}</span>
+                </p>
+            </li>
+            <li class="empty" *ngIf="reviewers.length===0">No Records Found</li>
+        </ul>
+    </div>
+</kendo-popup> -->

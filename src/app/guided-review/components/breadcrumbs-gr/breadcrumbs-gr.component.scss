@@ -1,0 +1,160 @@
+$color_1: #b5b5ba;
+$color_2: #fff;
+$color_3: #323130;
+$background-color_1: #0065B3;
+ 
+/* breadcrumb */
+/* Done / Active */
+.progressive-breadcrumbs {
+  width: 100%;
+  text-align: center;
+ 
+  .breadcrumbs {
+    display: inline-block;
+    width: 15%;
+    text-align: left;
+    position: relative; // added
+    /*&:last-child {
+	width: 1%; 
+	.circle {
+		.title {
+							margin-left: -50px;
+					}
+					}
+				} */
+  }
+ 
+  .circle {
+    display: inline-block;
+    background: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 20px;
+    border: 1px solid #8A8786;
+    z-index: 10;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+ 
+    .label {
+      display: inline-block;
+      color: $color_1;
+      font-size: 12px;
+      vertical-align: top;
+      /*     margin-top: 1px;
+            margin-right: 1px; */
+    }
+ 
+    .label.k-icon {
+      color: $color_2;
+      padding: 4px 3px;
+      vertical-align: top;
+    }
+ 
+    .title {
+      color: $color_1;
+      font-size: 13px;
+      line-height: 30px;
+      white-space: nowrap;
+      overflow-wrap: break-word;
+      cursor: pointer;
+      text-align: left;
+    }
+ 
+    .title.empty {
+      line-height: 5.5;
+    }
+  }
+ 
+  .bar {
+    display: inline-block;
+    background: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 20px;
+    border: 1px solid #8A8786;
+    /*       position: relative;
+			width: 88%;
+			height: 0px;
+			top: -32px; */
+    position: absolute;
+    width: 96%;
+    height: 0px;
+    top: 10px;
+    right: -1%;
+    border: none;
+    border-top: 1px solid #8A8786;
+    z-index: 0;
+  }
+ 
+  .circle.dashed {
+    border: 1px dashed #8A8786;
+  }
+ 
+  .circle.in.progress {
+    .label {
+      color: $color_2;
+    }
+  }
+ 
+  .circle.completed {
+    .label {
+      color: $color_2;
+    }
+  }
+ 
+  .circle.empty {
+    top: -10px;
+  }
+}
+ 
+ 
+.progressive-breadcrumbs.review-summary {
+  .breadcrumbs {
+    .circle.current-tab {
+      transform: translate(12px, 0vmin) rotate(0deg) scale(1.5);
+    }
+  }
+ 
+  .breadcrumbs.Completed {
+    .circle.current-tab {
+      transform: translate(12px, 0vmin) rotate(0deg) scale(1.5);
+      background: $background-color_1;
+ 
+      span.label {
+        color: #fff;
+      }
+    }
+  }
+ 
+  .breadcrumbs.Completed {
+    .circle {
+      background: $background-color_1;
+		border-color:$background-color_1;
+      span.label {
+        color: #fff;
+      }
+	}
+	span.bar {
+		right: -5%;
+		border-color:$background-color_1;
+	}
+  }
+}
+ 
+ 
+.progressive-breadcrumbs.review-summary {
+  .circle + {
+    .title {
+      font-size: 13px;
+      line-height: 30px;
+      white-space: nowrap;
+      overflow-wrap: break-word;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      top: 25px;
+      right: 55px;
+    }
+ }
+}

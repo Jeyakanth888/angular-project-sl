@@ -1,0 +1,52 @@
+<kendo-panelbar class="sherlock-panel">
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <h3 class="bold-text">My Review(s)</h3>
+        </ng-template>
+    </kendo-panelbar-item>
+    <kendo-panelbar-item [title]="''" expanded="true">
+        <ng-template #template let-anchor>
+            <span>{{ anchor.nativeElement.getAttribute("data-tooltip-text") }}</span>
+        </ng-template>
+        <ng-template kendoPanelBarContent>
+            <kendo-grid kendoTooltip position="top" tooltipClass="sherlock-tooltip" [tooltipTemplate]="template"
+                filter="p.show-tooltip-text-element" class="review-details-table my-review-table sherlock-table "
+                [data]="myReviewsData" [data]="view | async">
+                <kendo-grid-column class="bold-text" field="opportunity_id" title="Acct. Contract">
+                </kendo-grid-column>
+                <kendo-grid-column class="bold-text" field="clarity_id" title="Review ID">
+                </kendo-grid-column>
+                <kendo-grid-column field="clarity_id" title="Clarify ID">
+                </kendo-grid-column>
+                <kendo-grid-column class="engagement_name" title="Engagement #">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <p class="engagement-text"
+                            [ngClass]="dataItem.engagement_name.length>25?'show-tooltip-text-element':''"
+                            [attr.data-tooltip-text]="dataItem.engagement_name">
+                            {{dataItem.engagement_name}}</p>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column class="customer_name" title="Customer Name">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <p class="customername-text"
+                            [ngClass]="dataItem.customer_name.length>35?'show-tooltip-text-element':''"
+                            [attr.data-tooltip-text]="dataItem.customer_name"> {{dataItem.customer_name}}</p>
+                    </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="region" title="Region"></kendo-grid-column>
+                <kendo-grid-column field="sector" title="Sector"></kendo-grid-column>
+                <kendo-grid-column field="product" title="Product"></kendo-grid-column>
+                <kendo-grid-column field="involved_party" title="3rd party involved"></kendo-grid-column>
+                <kendo-grid-column field="adjustment_required" title="Adjustment Reqd."></kendo-grid-column>
+                <kendo-grid-column field="amount" title="Amount"></kendo-grid-column>
+                <kendo-grid-column title="Status">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                        <span class="copyrights-icon" class="sm-circle"
+                            [ngClass]="[dataItem.status=='1RC' ? 'one-RC' : '',  dataItem.status=='1R-In Progress' ? 'one-RIn-progress' : '', dataItem.status=='2R-In Progress' ? 'two-RIn-progress' : '', dataItem.status=='Not started' ? 'not started' : '',dataItem.status=='Approved' ? 'approved' : '']"></span>
+                        {{dataItem.status}}
+                    </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+        </ng-template>
+    </kendo-panelbar-item>
+</kendo-panelbar>

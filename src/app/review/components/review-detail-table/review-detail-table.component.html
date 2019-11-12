@@ -1,0 +1,42 @@
+<kendo-panelbar class="sherlock-panel">
+    <kendo-panelbar-item [expanded]="true">
+        <ng-template kendoPanelBarContent>
+            <h3 class="review-details-panel-heading bold-text">Review Details</h3>
+        </ng-template>
+    </kendo-panelbar-item>
+    <kendo-panelbar-item [title]="''" expanded="true" class="review-details-panel">
+        <ng-template kendoPanelBarContent>
+            <kendo-grid class="review-detail-table detail-one-table sherlock-table not-scrollable" [data]="reviewDetailsData" [data]="view | async">
+                <kendo-grid-column field="review_start_date" title="Review start date">
+                </kendo-grid-column>
+                <kendo-grid-column class="engagement_name" title="Engagement name">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                                <p class="engagement-text"> {{dataItem.engagement_name}}</p>
+                        </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="financial_year" title="Financial year"></kendo-grid-column>
+                <kendo-grid-column field="country" title="Country"></kendo-grid-column>
+                <kendo-grid-column field="contract_amount" title="Contract Amount"></kendo-grid-column>
+                <kendo-grid-column field="estimated_contract_length" title="Estimated length of contract">
+                </kendo-grid-column>
+            </kendo-grid>
+        </ng-template>
+    </kendo-panelbar-item>
+    
+    <kendo-panelbar-item [title]="''" expanded="true" class="review-details-panel">
+            <ng-template kendoPanelBarContent>
+                <kendo-grid class="review-detail-table detail-two-table sherlock-table not-scrollable" [data]="reviewDetailsRequired" [data]="view | async">
+                    <kendo-grid-column field="recognition_type" title="Recognition type">
+                    </kendo-grid-column>
+                    <kendo-grid-column  field="VL_agreement" title="VL agreement">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="premier_agreement" title="Premier agreement"></kendo-grid-column>
+                    <kendo-grid-column field="changepoint_setup" title="ChangePoint set up okay?"></kendo-grid-column>
+                    <kendo-grid-column field="revenue_recognition" title="Revenue recognition okay?"></kendo-grid-column>
+                    <kendo-grid-column field="monthend_workbook_tracking" title="Month end workbook tracking required">
+                    </kendo-grid-column>
+                </kendo-grid>
+            </ng-template>
+        </kendo-panelbar-item>
+
+</kendo-panelbar>

@@ -1,0 +1,89 @@
+<div class="right-copy-text">
+    <p (click)="clickCopyDecision()" class="semibold-text"><span class="note-icon k-icon k-i-copy
+                                .k-i-files"> </span><span> Copy from another decision tree</span></p>
+</div>
+<div class="bottom-content-block">
+    <div class="guided-review-left-node">
+        <ul class="section-node" #sectionLists>
+            <li class="section active" >
+                <input type="checkbox" class="section-selection-checkbox" id="checkbox" [disabled]="showSectionTree"
+                    [checked]="showSectionTree" />
+                <label for="checkbox"></label>
+                <p class="section-type">00</p>
+                <p class="section-name semibold-text">Welcome</p>
+            </li>
+            <li class="section" [ngClass]="showSectionTree?'clickable':'disabled'" (click)="onSelectSection($event)" *ngFor="let data of questionsData;let i =index;">
+                <input type="checkbox"  class="section-selection-checkbox" id="{{ 'checkbox_' + i }}"
+                    [disabled]="!showSectionTree" />
+                <label for="{{ 'checkbox_' + i }}"></label>
+                <p class="section-type"><span
+                        *ngIf="data.StepSubtitle!==''|| data.StepSubtitle!==null">{{data.StepSubtitle | titlecase }}
+                    </span></p>
+                <p class="section-name semibold-text">{{data.Question}}</p>
+            </li>
+        </ul>
+    </div>
+
+    <app-question-node class="center-qus-content" [ShowStepSubTitle]= "stepSubTitle" [showQuestionNumber]="qustionNumber" [showQuestion]="printQuestion"
+        [showContract]="showContractModification" (showSectionTree)='showSectionTreeQuestions($event)'>
+    </app-question-node>
+    <app-section-tree class="qus-section-tree" [sectionAllQuestions]="showQuestionsToSectionTree"
+        [selectedSection]='selectedSectionRow' (passSelectedQusIndexNum)='printSelectedQuestionNumber($event)' (passSelectedQuestion)='printSelectedQuestion($event)'
+        *ngIf="showSectionTree">
+    </app-section-tree>
+</div>
+
+<kendo-dialog title="''" *ngIf="showCopyDecisionPopup" (close)="closeTogglePopup()"
+    class="sherlock-dialog-box copy-decision-popup">
+    <p class="dialog-head"> Copy from another decision tree</p>
+    <div class="warning-action-block">
+        <p><span class="k-icon icon-warning"> </span>This action will replace all the answers
+            with the selected review</p>
+    </div>
+    <p>Please select a review that need to be copied to this decision tree.</p>
+    <ng-template #template let-anchor>
+        <span>{{ anchor.nativeElement.getAttribute("data-tooltip-text") }}</span>
+    </ng-template>
+    <kendo-grid kendoTooltip position="top" tooltipClass="sherlock-tooltip" [tooltipTemplate]="template"
+        filter="p.show-tooltip-text-element" class="copy-decision-table not-scrollable sherlock-table"
+        [data]="tableData" [selectable]="{enabled: true, checkboxOnly: true}">
+        <kendo-grid-column>
+            <ng-template kendoGridCellTemplate>
+                <input type="radio" name="customer" id="review_id"><label for="review_id"></label>
+            </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="account_contract" title="Account Contract">
+        </kendo-grid-column>
+        <kendo-grid-column field="review_id" class="bold-text blue-text" title="Review ID"></kendo-grid-column>
+        <kendo-grid-column class="engagement_name" title="Engagement #">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p class="engagement-text" [ngClass]="dataItem.engagement_name.length>25?'show-tooltip-text-element':''"
+                    [attr.data-tooltip-text]="dataItem.engagement_name">
+                    {{dataItem.engagement_name}}</p>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column class="customer_name" title="Customer Name">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <p class="customername-text" [ngClass]="dataItem.customer.length>25?'show-tooltip-text-element':''"
+                    [attr.data-tooltip-text]="dataItem.customer"> {{dataItem.customer}}</p>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="product" title=""></kendo-grid-column>
+        <kendo-grid-column field="program" title="Program"></kendo-grid-column>
+        <kendo-grid-column title="">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <span class="view-account semibold-text blue-text">View </span>
+            </ng-template>
+        </kendo-grid-column>
+
+    </kendo-grid>
+    <div class="btns-row">
+        <button kendoButton class="sherlock-btns btn-copy">
+            Copy & Replace
+        </button>
+        <button kendoButton class="sherlock-btns default-btn btn-cancel" (click)="closeTogglePopup()">
+            Cancel
+        </button>
+    </div>
+</kendo-dialog>

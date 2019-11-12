@@ -1,0 +1,44 @@
+$color_1: #79828B;
+$color_2: #131313;
+
+.no-conclusion {
+	text-align: center;
+	padding: 10px 0px;
+	font-size: 18px;
+	color: $color_1;
+}
+.reviewed-reviewers {
+	border: 1px solid #B9B9B9;
+	position: relative;
+	margin: 20px;
+	padding: 10px 20px 10px 40px;
+	.user-icon {
+		display: inline-block;
+		position: absolute;
+		top: 20px;
+		left: -20px;
+		background: #339FD9 !important;
+	}
+	p {
+		margin: 5px 0;
+		height: 48px;
+		overflow: hidden;
+		font-size: 15px;
+		line-height: 24px;
+		white-space: normal;
+		width: 100%;
+		text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+	}
+}
+h5.reviewer-name {
+	display: inline-block;
+	font-size: 16px;
+	color: $color_2;
+	margin: 0 10px 0 0;
+}
+span.reviewed-time {
+	float: right;
+}
+
+

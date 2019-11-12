@@ -1,0 +1,42 @@
+<div class="sherlock-container">
+    <div class="page-header">
+        <h1 class="page-title bold-text">Dashboard</h1>
+    </div>
+    <app-dashboard-filter class="page-filter"></app-dashboard-filter>
+    <div class="tiles-row">
+        <app-dashboard-tile *ngFor="let tileData of tilesData" class="tiles" [tileData]="tileData">
+        </app-dashboard-tile>
+    </div>
+    <div class="border-row">
+        <div class="total-count-row">
+            <p class="total">
+                <span class="total bold-text">Total</span>
+                <span class="total-count semibold-text">{{totalCount}}</span>
+            </p>
+            <span class="days-avg">5 days (avg. time)</span>
+            <p class="view-all semibold-text blue-text">View all <span class="k-icon k-i-arrow-right"></span></p>
+        </div>
+    </div>
+    <app-my-reviews class="reviews-block"></app-my-reviews>
+    <p class="count-sort-block semibold-text" #countSort (click)="openSortOption()"><span>{{selectedSort}}</span> <span
+            class="k-icon k-i-arrow-chevron-down"></span></p>
+    <div class="tiles-row">
+        <app-dashboard-tiles *ngFor="let circleTileData of circleTilesData" class="panel-tiles" [data]="circleTileData">
+        </app-dashboard-tiles>
+    </div>
+    <div class="dashboard-bottom">
+            <app-sales-location-map class="panels map-panel"></app-sales-location-map>
+            <app-top-reviews class="panels review-panel"></app-top-reviews>
+    </div>
+    
+</div>
+
+<kendo-popup [anchor]="countSort" class="popSortOptions" #popCountSort (anchorViewportLeave)="closeSortOption()"
+    *ngIf="showSortOption">
+    <div class='content popover-content'>
+        <ul class="list-dropdown">
+            <li (click)="onSelectSort('Count')">Count</li>
+            <li (click)="onSelectSort('Amount')">Amount</li>
+        </ul>
+    </div>
+</kendo-popup>

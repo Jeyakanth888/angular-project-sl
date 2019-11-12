@@ -1,0 +1,36 @@
+<div class="page-filter-section">
+    <div (click)="clickFilter()"><span class="filter-icon"></span> Filter <span class="sm-circle green filter"></span>
+    </div>
+</div>
+
+<div *ngIf="showFilterOptions" class="review-filter-options" [@slideInOut]>
+    <h5>Filter Options</h5>
+    <form>
+        <div class="review-filter-options-row">
+            <div class="review-filter-fields row-fields">
+                <label> Field</label>
+                <kendo-dropdownlist class="sherlock-dropdown" name="field" [data]="testDropdowns" [textField]="'text'"
+                    [valueField]="'value'" [valuePrimitive]="true">
+                </kendo-dropdownlist>
+            </div>
+            <div class="review-filter-fields row-fields">
+                <label> Search operator</label>
+                <kendo-dropdownlist class="sherlock-dropdown" name="search_operator1" [data]="testDropdowns"
+                    [textField]="'text'" [valueField]="'value'" [valuePrimitive]="true">
+                </kendo-dropdownlist>
+            </div>
+            <div class="review-filter-fields row-fields">
+                <label> Search value</label>
+                <!--  <kendo-dropdownlist class="sherlock-dropdown" name="search_operator2" [data]="testDropdowns" [textField]="'text'"
+                    [valueField]="'value'" [valuePrimitive]="true">
+                </kendo-dropdownlist>  --->
+                <input type="text" class="k-textbox input-text">
+            </div>
+            <button class="sherlock-btns add-btn" kendoButton>Add</button>
+            <div class="filter-submit-cancel-btns">
+                <button class="sherlock-btns apply-btn disable" kendoButton>Apply</button>
+                <button class="sherlock-btns close-btn" (click)="clickFilter()" kendoButton>Close</button>
+            </div>
+        </div>
+    </form>
+</div>
