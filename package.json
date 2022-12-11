@@ -52,7 +52,7 @@
     "adal-angular6": "^1.0.68",
     "classlist.js": "^1.1.20150312",
     "d3": "^5.9.7",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "leaflet": "^1.5.1",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.4.0",
